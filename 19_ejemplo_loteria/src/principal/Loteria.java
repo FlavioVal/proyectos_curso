@@ -46,6 +46,8 @@ public class Loteria {
         }
     }
     public static void mostrar(int[] datos){
+    	//Comentario Versión 5 desde equipo de casa
+    	//muestra los datos del array, muestra los numeros de la primitiva
         for(int n:datos){
             System.out.println(n);
         }
