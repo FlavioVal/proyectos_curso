@@ -20,10 +20,13 @@ public class Cuenta {
 		}
 	}
 	
-	public void extraer(double cant) {
-		saldo -= cant;
+	public void extraer(double cant) {	
+		if (cant>0){
+			saldo -= cant;			
+		}else {
+			System.out.println("Ingresar Cantidad Valida. !");
+		}
 	}
-	
 	public double getSaldo() {
 		return saldo;
 	}
