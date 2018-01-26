@@ -49,7 +49,7 @@ public class JVPrincipal extends JFrame {
 		JButton btnNuevoContacto = new JButton("Nuevo contacto");
 		btnNuevoContacto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JVNuevo jv=new JVNuevo();
+				JVNuevo jv=JVNuevo.getVentana();
 				
 			}
 		});
