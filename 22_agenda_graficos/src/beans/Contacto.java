@@ -29,4 +29,7 @@ public class Contacto {
 		this.telefono = telefono;
 	}
 	
+	public String toString() {
+		return nombre;
+	}
 }
