@@ -87,7 +87,16 @@ public class JVPrincipal extends JFrame {
 				System.exit(0); //finaliza Java
 			}
 		});
-		btnSalir.setBounds(150, 249, 89, 23);
+		btnSalir.setBounds(240, 249, 89, 23);
 		contentPane.add(btnSalir);
+		
+		JButton btnVerContactos = new JButton("Ver contactos");
+		btnVerContactos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JVContactos v=new JVContactos();
+			}
+		});
+		btnVerContactos.setBounds(50, 249, 112, 23);
+		contentPane.add(btnVerContactos);
 	}
 }
