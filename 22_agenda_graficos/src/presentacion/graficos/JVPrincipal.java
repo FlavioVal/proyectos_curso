@@ -1,15 +1,20 @@
 package presentacion.graficos;
 
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.ListCellRenderer;
 import javax.swing.border.EmptyBorder;
 
 import beans.Contacto;
@@ -101,9 +106,47 @@ public class JVPrincipal extends JFrame {
 		btnVerContactos.setBounds(50, 249, 112, 23);
 		contentPane.add(btnVerContactos);
 		
-		JComboBox cbContactos = new JComboBox();
+		JComboBox<Contacto> cbContactos = new JComboBox();
 		cbContactos.setBounds(278, 48, 120, 22);
 		contentPane.add(cbContactos);
+		//configurar modo de visualización
+		cbContactos.setRenderer(new ListCellRenderer<Contacto>() {
+
+			@Override
+			public Component getListCellRendererComponent(JList<? extends Contacto> arg0, Contacto arg1, int arg2,
+					boolean arg3, boolean arg4) {
+				//construimos un JLabel para cada elemento de la lista			
+				//y le indicamos lo que tiene que mostrar
+				JLabel lb=new JLabel();
+				if(arg1!=null) {
+					lb.setText(arg1.getEmail());
+				}
+				return lb;
+			}
+		});
+		
+		//programamos evento de recepcion de foco en la lista
+		//y en ese evento, programamos la carga de datos en la misma
+		cbContactos.addFocusListener(new FocusListener() {
+			
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				
+				
+			}
+			
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				//carga del combo
+				GestionAgenda agenda=new GestionAgenda();
+				AdaptadorCombo<Contacto> adp=new AdaptadorCombo<>(agenda.recuperarTodos());
+				cbContactos.setModel(adp);			
+			}
+		});
+		
+		
+		
+		
 		
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.addActionListener(new ActionListener() {
@@ -111,15 +154,13 @@ public class JVPrincipal extends JFrame {
 				Contacto c=(Contacto)cbContactos.getSelectedItem();
 				GestionAgenda agenda=new GestionAgenda();
 				agenda.eliminar(c.getEmail());
+				
 			}
 		});
 		btnEliminar.setBounds(281, 11, 89, 23);
 		contentPane.add(btnEliminar);
 		
-		//carga del combo
-		GestionAgenda agenda=new GestionAgenda();
-		AdaptadorCombo<Contacto> adp=new AdaptadorCombo<>(agenda.recuperarTodos());
-		cbContactos.setModel(adp);
+		
 		
 	}
 }

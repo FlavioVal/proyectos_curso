@@ -70,8 +70,9 @@ public class GestionAgenda {
 			String sql="select * from contactos";
 			Statement st=cn.createStatement();
 			ResultSet rs=st.executeQuery(sql);
-			Statement st2=cn.createStatement();
+			/*Statement st2=cn.createStatement();
 			st2.execute("insert into contactos(nombre,email,telefono) values('c1','e1',11)");
+			*/
 			while(rs.next()) {
 				Contacto c=new Contacto(rs.getString("nombre"),rs.getString("email"),rs.getInt("telefono"));
 				contactos.add(c);
