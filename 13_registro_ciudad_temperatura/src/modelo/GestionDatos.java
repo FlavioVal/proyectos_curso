@@ -13,17 +13,10 @@ import java.util.stream.Collectors;
 import beans.Ciudad;
 
 public class GestionDatos {
-//	private ArrayList<Ciudad> listaCiudad;
-//	private Ciudad ciudad;
-	private String fichero= "D:\\manana\\datosCiudad.txt"; ;
+	private String fichero= "D:\\CursoJavaProfesional\\datosCiudad.txt"; 
 	
 	public void registrar(String nomCiudad,double temperatura) {
-	//primero creo objeto Ciudad y Registro sus datos	
-//		listaCiudad= new ArrayList<>();
-//		ciudad=new Ciudad(nomCiudad,temperatura);
-//		listaCiudad.add(ciudad);
-	
-	//Segundo creo fichero externo y registro su datos en el fichero	
+
 		try (FileOutputStream fs = new FileOutputStream(fichero, true);
 				PrintStream salida= new PrintStream(fs);) {//todos los objetos que esten dentro del try con recursos se van a cerrar de manera automatica.y en orden inverso al declarado.
 			salida.println(nomCiudad+"|"+temperatura);		
@@ -36,16 +29,6 @@ public class GestionDatos {
 		}
 		
 	}//fin de registrar
-	
-	/*
-	public double tempMedia(ArrayList<Ciudad> lista) {
-		double media=0.0;
-		for(int i=0;i<lista.size();i++) {
-			media+=lista.get(i).getTemperatura();
-		}
-		return media;
-	}//fin de tempMedia
-	*/
 	
 	public double temperaturaMedia() {//más eficiente que trabajar con ArrayList es trabajar con archivos de texto externo.
 		double media=0.0;

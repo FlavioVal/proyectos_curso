@@ -26,7 +26,7 @@ public class Main {
 			System.out.println("3.- Nota media");
 			System.out.println("4.- Mostrar todas");
 			System.out.println("5.- Salir");
-			op=Integer.parseInt((sc.nextLine()));	
+			op=Integer.parseInt(sc.nextLine());	
 			switch(op) {
 			case 1:
 				System.out.print("Nota:");
@@ -38,6 +38,7 @@ public class Main {
 				for(Float n:ap) {
 					System.out.print(n+" ; ");
 				}
+				System.out.println();
 				break;
 			case 3:
 				System.out.println("La media es: "+media());
@@ -56,7 +57,7 @@ public class Main {
 	}//fin de main.
 	
 	private static void addNota(Float n) {
-		if(n<=0 && n<=10) {
+		if(n>=0 && n<=10) {
 			listanotas.add(n);
 		}
 	}
@@ -82,8 +83,9 @@ public class Main {
 	
 	private static void mostrarNotas() {
 		for(Float n:listanotas) {
-			System.out.println(n+ " ; ");
+			System.out.print(n+ " ; ");
 		}
+		System.out.println();
 	}
 	
 }
